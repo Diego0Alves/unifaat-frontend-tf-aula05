@@ -6,7 +6,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "cli": "docker compose run --quiet-pull --rm node-cli-aula-14-container",
-    "watch": "./node_modules/.bin/vite build --watch"
+    "watch": "vite build --watch"
   },
   "type": "module",
   "author": "Luan Tavares",
