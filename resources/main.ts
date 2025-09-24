@@ -7,6 +7,8 @@ function showLogin() {
     (document.getElementById("login-container") as HTMLElement).style.display = "block";
     (document.getElementById("main-content") as HTMLElement).style.display = "none";
     (document.getElementById("login-error") as HTMLElement).innerText = "";
+    (document.getElementById("email") as HTMLInputElement).value = "";
+    (document.getElementById("password") as HTMLInputElement).value = "";
 }
 
 function showMain() {
@@ -17,16 +19,17 @@ function showMain() {
 
 async function loginHandler(e: Event) {
     e.preventDefault();
-    const username = (document.getElementById("username") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
     const password = (document.getElementById("password") as HTMLInputElement).value;
     try {
         const res = await fetch(`${API_URL}/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({ email, password })
         });
         if (!res.ok) throw new Error("Login inválido");
         const data = await res.json();
+        if (!data.token) throw new Error("Token não recebido");
         jwt = data.token;
         showMain();
     } catch (err) {
@@ -95,6 +98,6 @@ function setupEvents() {
 }
 
 window.onload = () => {
-    showLogin();
     setupEvents();
+    showLogin();
 };
