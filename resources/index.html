@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula 05 :: TF</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Usuário" required />
+            <input type="password" id="password" placeholder="Senha" required />
+            <button type="submit">Entrar</button>
+        </form>
+        <div id="login-error" class="error-message"></div>
+    </div>
+
+    <div id="main-content" style="display:none;">
+        <div>
+            <button id="logout-btn">Sair</button>
+        </div>
+        <div id="upload-wrapper">
+            <input type="file" id="image-input" />
+            <button id="upload-btn">Enviar Imagem</button>
+            <div id="upload-result"></div>
+        </div>
+        <div class="user-list" id="user-list"></div>
+        <div class="pagination">
+            <button id="prev-btn">Anterior</button>
+            <span id="page-info"></span>
+            <button id="next-btn">Próxima</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
